@@ -42,7 +42,7 @@
   height: 200px;
   background-color: #005daf;
   margin-top: 20px;
-  margin-right: 20px;
+  margin-left: 10px;
 }
 
 .logo-left-part-background {
@@ -196,7 +196,7 @@
 
   100% {
     opacity: 1;
-    padding: 20px 40px;
+    /* padding: 20px 40px; */
     margin: 50px auto;
     width: 50%;
   }
@@ -224,5 +224,52 @@
   .section.shadow {
     margin: 50px 10px;
     width: 280px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .form {
+    align-items: center;
+    margin: 0;
+  }
+  .form-field {
+    width: 120px;
+    height: 35px;
+    font-size: 11px;
+  }
+  .form > button {
+    width: 120px;
+  }
+  .logo-right-part-background {
+    width: 120px;
+    height: 100px;
+    margin-left: 0;
+  }
+  .logo-back-of-sofa {
+    width: 50px;
+    height: 25px;
+    top: 28px;
+    left: 35px;
+    background-color: #fafbf5;
+  }
+  .logo-sofa-seat {
+    width: 87px;
+    height: 15px;
+    background-color: #fafbf5;
+    top: 32px;
+    left: 17px;
+    position: relative;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  .animation.a7 a {
+    font-size: 12px;
+    text-overflow: ellipsis;
+  }
+}
+
+@media only screen and(max-width: 375px) {
+  .animation.a7 a {
+    font-size: 10px;
   }
 }
