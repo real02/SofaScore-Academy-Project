@@ -220,13 +220,6 @@
   }
 }
 
-@media only screen and (max-width: 320px) {
-  .section.shadow {
-    margin: 50px 10px;
-    width: 280px;
-  }
-}
-
 @media only screen and (max-width: 650px) {
   .form {
     align-items: center;
@@ -239,6 +232,7 @@
   }
   .form > button {
     width: 120px;
+    font-size: 12px;
   }
   .logo-right-part-background {
     width: 120px;

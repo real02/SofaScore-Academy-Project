@@ -1,8 +1,18 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useHistory,
+} from "react-router-dom";
+
 import LoginPage from "./modules/LoginPage/LoginPage";
 import SignUpPage from "./modules/SignUp/SignUpPage";
-import { HomePage } from "./modules/HomePage/HomePage";
+import HomePage from "./modules/HomePage/HomePage";
+import LeaguesPage from "./modules/Leagues/LeaguesPage";
+import PlayersPage from "./modules/Players/PlayersPage";
+import EventsPage from "./modules/Events/EventsPage";
+
 import { Provider, useSelector } from "react-redux";
 import { store, persistor } from "./state/store";
 import { ProtectedRoute } from "./api/ProtectedRoute";
@@ -22,21 +32,27 @@ function Providers() {
 }
 
 function App() {
-  const token = useSelector((state) => state.user.token);
+  const user = useSelector((state) => state.user);
+
+  let token = undefined;
+  if (user.user) {
+    token = user.user.token;
+  }
+  const history = useHistory();
 
   useEffect(() => {
-    if(!token) {
-      return 
+    if (!token) {
+      return;
     }
 
     async function fn() {
       const data = await checkToken(token);
 
-      if(data.error) {
-        // redirect to /login
+      if (data.error) {
+        history.push("/login");
+      } else {
+        history.push("/");
       }
-
-      console.log({ data });
     }
     fn();
     // eslint-disable-next-line
@@ -52,6 +68,15 @@ function App() {
       </Route>
       <ProtectedRoute exact path="/">
         <HomePage />
+      </ProtectedRoute>
+      <ProtectedRoute path="/myLeagues">
+        <LeaguesPage />
+      </ProtectedRoute>
+      <ProtectedRoute path="/leagues/:id/players">
+        <PlayersPage />
+      </ProtectedRoute>
+      <ProtectedRoute path="/leagues/:id/events">
+        <EventsPage />
       </ProtectedRoute>
       <Route path="*">
         <h1>404 - page not found</h1>
