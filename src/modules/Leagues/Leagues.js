@@ -1,0 +1,1 @@
+// prikaz svih liga za trenutnog korisnika

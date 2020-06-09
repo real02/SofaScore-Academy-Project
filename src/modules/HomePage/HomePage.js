@@ -1,33 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 
-import Toolbar from "../../components/Toolbar/Toolbar";
-import SideDrawer from "../../components/SideDrawer/SideDrawer";
-import Backdrop from "../../components/Backdrop/Backdrop";
+import Drawer from "../../components/Drawer/Drawer";
 
 export function HomePage() {
-  const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
-
-  const drawerToggleClickHandler = () => {
-    setSideDrawerOpen((prevState) => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen };
-    });
-  };
-
-  const backdropClickHandler = () => {
-    setSideDrawerOpen({ sideDrawerOpen: false });
-  };
-
   return (
     <div style={{ height: "100%" }}>
-      <Toolbar pageType={`home`} drawerToggleClickHandler={drawerToggleClickHandler} />
-      <SideDrawer pageType={`home`} show={sideDrawerOpen}/>
-      {sideDrawerOpen && (
-        <>
-          <Backdrop click={backdropClickHandler} />
-        </>
-      )}
+      <Drawer />
       <main style={{ marginTop: "64px" }}>
-        <p>This is the page content</p>
+        <p>Welcome to your home page</p>
       </main>
     </div>
   );

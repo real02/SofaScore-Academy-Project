@@ -12,6 +12,11 @@
   transition: transform 0.3s ease-out;
 }
 
+.side-drawer .active {
+  /* za razlikovanje trenutno odabranog itema od ostalih */
+  color: tomato
+}
+
 .side-drawer.open {
   transform: translateX(0);
 }

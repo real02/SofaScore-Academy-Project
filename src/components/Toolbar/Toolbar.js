@@ -3,6 +3,7 @@ import React from "react";
 import DrawerToggleButton from "../SideDrawer/DrawerToggleButton"
 import "./Toolbar.css"
 import { Link } from "react-router-dom";
+import { LogoutButton } from "./LogoutButton";
 
 const Toolbar = (props) => (
   <header className="toolbar">
@@ -16,16 +17,16 @@ const Toolbar = (props) => (
       <div className="spacer" />
       <div className="toolbar-navigation-items">
         <ul>
-          {props.pageType === "home" ? (
+          {window.location.pathname === "/" ? (
             <>
             <li><Link to={`/myLeagues`}>My Leagues</Link></li>
             <li><a href="#">My Profile</a></li>
-            <li><Link to="#">Logout</Link></li>
+            <li><LogoutButton/></li>
             </>
           ) : (
             <>
             <li><a href="#">My Profile</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><LogoutButton/></li>
             </>
           )
         }

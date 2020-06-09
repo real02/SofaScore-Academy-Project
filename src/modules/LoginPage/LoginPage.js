@@ -13,12 +13,10 @@ const INITIAL_STATE = {
 };
 
 const LoginPage = () => {
-  const {
-    handleChange,
-    handleBlur,
-    values,
-    errors,
-  } = useFormValidation(INITIAL_STATE, validateAuth);
+  const { handleChange, handleBlur, values, errors } = useFormValidation(
+    INITIAL_STATE,
+    validateAuth
+  );
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -33,8 +31,8 @@ const LoginPage = () => {
       )
         .then((resp) => resp.json())
         .then((data) => {
-          if (data.errors) {
-            history.push("*")
+          if (data.error) {
+            history.push("*");
           } else {
             dispatch(setUser(data));
             history.push("/");

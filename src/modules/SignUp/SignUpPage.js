@@ -33,12 +33,10 @@ const SignUpPage = () => {
       )
         .then((resp) => resp.json())
         .then((data) => {
-          if (data.errors) {
-            // handle errors
-          } else {
+          if (!data.errors) {
             dispatch(setUser(data));
-            history.push("/login");
           }
+          history.push("/login");
         });
     }
   };

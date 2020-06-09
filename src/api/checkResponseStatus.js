@@ -13,4 +13,6 @@ export async function checkStatus(response) {
     const data = await response.json();
     return data;
   }
+
+  return { error: "Error"}
 }

@@ -19,6 +19,8 @@ import { ProtectedRoute } from "./api/ProtectedRoute";
 import { PersistGate } from "redux-persist/integration/react";
 import { checkToken } from "./api/checkToken";
 
+import CreateNewLeague from "./modules/Leagues/CreateNewLeague";
+
 function Providers() {
   return (
     <Provider store={store}>
@@ -34,10 +36,11 @@ function Providers() {
 function App() {
   const user = useSelector((state) => state.user);
 
-  let token = undefined;
-  if (user.user) {
-    token = user.user.token;
+  let token = undefined
+  if(user.user) {
+    token = user.token
   }
+
   const history = useHistory();
 
   useEffect(() => {
@@ -51,7 +54,11 @@ function App() {
       if (data.error) {
         history.push("/login");
       } else {
-        history.push("/");
+        const route = window.location.pathname
+
+        if(route === "/login" || route === "/register") {
+          history.push("/");
+        }
       }
     }
     fn();
@@ -69,13 +76,16 @@ function App() {
       <ProtectedRoute exact path="/">
         <HomePage />
       </ProtectedRoute>
-      <ProtectedRoute path="/myLeagues">
+      <ProtectedRoute exact path="/myLeagues">
         <LeaguesPage />
       </ProtectedRoute>
-      <ProtectedRoute path="/leagues/:id/players">
+      <ProtectedRoute path="/myLeagues/createNewLeague">
+        <CreateNewLeague />
+      </ProtectedRoute>
+      <ProtectedRoute exact path="/leagues/:id/players">
         <PlayersPage />
       </ProtectedRoute>
-      <ProtectedRoute path="/leagues/:id/events">
+      <ProtectedRoute exact path="/leagues/:id/events">
         <EventsPage />
       </ProtectedRoute>
       <Route path="*">
