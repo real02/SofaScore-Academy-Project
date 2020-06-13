@@ -20,12 +20,12 @@ const Toolbar = (props) => (
           {window.location.pathname === "/" ? (
             <>
             <li><Link to={`/myLeagues`}>My Leagues</Link></li>
-            <li><a href="#">My Profile</a></li>
+            <li><a href="/">My Profile</a></li>
             <li><LogoutButton/></li>
             </>
           ) : (
             <>
-            <li><a href="#">My Profile</a></li>
+            <li><a href="/">My Profile</a></li>
             <li><LogoutButton/></li>
             </>
           )

@@ -79,7 +79,7 @@ function App() {
       <ProtectedRoute exact path="/myLeagues">
         <LeaguesPage />
       </ProtectedRoute>
-      <ProtectedRoute path="/myLeagues/createNewLeague">
+      <ProtectedRoute exact path="/myLeagues/createNewLeague">
         <CreateNewLeague />
       </ProtectedRoute>
       <ProtectedRoute exact path="/leagues/:id/players">
