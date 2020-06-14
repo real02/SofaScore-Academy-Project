@@ -1,10 +1,11 @@
-export const reqOptions = (data) => {
+export const reqOptions = (data, token) => {
   const jsonObject = {
     method: "POST",
     headers: {
+      "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
       "Accept": "application/json",
-      "X-App-Key": "matija"
+      "X-App-Key": "dino"
     },
     body: JSON.stringify(data),
   };

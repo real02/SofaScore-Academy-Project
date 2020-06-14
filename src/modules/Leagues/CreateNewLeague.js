@@ -3,10 +3,10 @@ import React from "react";
 import "./createNewLeague.css";
 import useFormValidation from "../../utils/useFormValidation";
 import validateLeagueInput from "../../utils/validateLeagueInput";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createNewLeague } from "../../redux/actions";
-import { reqOptions } from "../../api/requestOptionsWithAppKey";
+import { reqOptions } from "../../api/reqOptAuthorization";
 
 const INITIAL_STATE = {
   name: "",
@@ -24,19 +24,21 @@ const CreateNewLeague = () => {
 
   const hasErrors = !!Object.keys(errors).length;
 
+  const user = useSelector((state) => state.user);
+  const token = user.token;
+
   const handleSubmit = () => {
     if (!hasErrors) {
       fetch(
         "https://private-leagues-api.herokuapp.com/api/leagues",
-        reqOptions(values)
+        reqOptions(values, token)
       )
         .then((resp) => resp.json())
         .then((data) => {
-          console.log(data.error)
+          console.log(data.error);
           if (data.error) {
             history.push("*");
-          }   
-          else {
+          } else {
             dispatch(createNewLeague(data));
             history.push("/myLeagues");
           }
