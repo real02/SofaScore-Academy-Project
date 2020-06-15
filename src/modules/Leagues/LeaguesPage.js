@@ -24,10 +24,10 @@ export function LeaguesPage() {
       },
     }).then((resp) =>
       resp.json().then((data) => {
-        var i
-        for (i=0; i < data.length; i++) {
+        var i;
+        for (i = 0; i < data.length; i++) {
           // console.log(data[i])
-          myLeaguesRef.current.push(data[i])
+          myLeaguesRef.current.push(data[i]);
         }
       })
     );
@@ -37,14 +37,16 @@ export function LeaguesPage() {
     <div className="leagues-page">
       <CreateLeagueButton />
       <Drawer />
-      {/* <div className="kontejner"> */}
-        {console.log(myLeaguesRef.current)}
-        {/* {myLeaguesRef.current.map((league) => 
-          <LeagueItem key={league.id} liga={league} />
-        )} */}
+      <div id="background">
+        {/* <div className="kontejner"> */}
+          {/* {console.log(myLeaguesRef.current)}
+          {myLeaguesRef.current.map((league) => (
+            <LeagueItem key={league.id} liga={league} />
+          ))} */}
 
-        <LeagueItem />
-      {/* </div> */}
+          <LeagueItem />
+        {/* </div> */}
+      </div>
     </div>
   );
 }

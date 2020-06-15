@@ -4,13 +4,13 @@ const INITIAL_STATE = {
   leagues: [],
 };
 
-export default function (state = INITIAL_STATE, action) {
+export default function (state = {}, action) {
   switch (action.type) {
     case GET_LEAGUES:
       return { ...state, leagues: action.payload };
     case CREATE_NEW_LEAGUE:
-      state.leagues.push(action.league);
-      return action.league
+      // state.leagues.push(action.league);
+      return {...state, leagues: action.league}
     case DELETE_LEAGUE:
       return {
         ...state,
