@@ -5,7 +5,7 @@ export const SET_USER = "SET_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
 
 export const CREATE_NEW_LEAGUE = "CREATE_NEW_LEAGUE";
-export const DELETE_LEAGUE = "DELETE_LEAGUE"
+export const DELETE_LEAGUE = "DELETE_LEAGUE";
 export const GET_LEAGUES = "GET_LEAGUES";
 
 export const setUser = (user) => ({
@@ -18,9 +18,9 @@ export const logoutUser = () => ({
   user: {},
 });
 
-export const createNewLeague = (id) => ({
+export const createNewLeague = (league) => ({
   type: CREATE_NEW_LEAGUE,
-  id,
+  league
 });
 
 export const getMyLeagues = () => async (dispatch) => {
@@ -46,10 +46,12 @@ export const getMyLeagues = () => async (dispatch) => {
 
 export const deleteLeague = (id) => async (dispatch) => {
   if (window.confirm("Are you sure? This will delete the entire league!")) {
-    await axios.delete(`https://private-leagues-api.herokuapp.com/api/leagues/:${id}`);
+    await axios.delete(
+      `https://private-leagues-api.herokuapp.com/api/leagues/:${id}`
+    );
     dispatch({
       type: DELETE_LEAGUE,
-      payload: id
-    })
+      payload: id,
+    });
   }
 };

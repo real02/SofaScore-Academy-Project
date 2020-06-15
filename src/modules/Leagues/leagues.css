@@ -16,7 +16,7 @@
   background-color: tomato;
   height: 140px;
   border-radius: 6px;
-  margin: 0 220px;
+  margin: 0 220px 50px 220px;
   box-shadow: rgba(0, 0, 0, 0.2);
 }
 
@@ -61,4 +61,19 @@
 .leftSection h2 {
   color: white;
   font-size: 15px;
+}
+
+.kontejner {
+  margin-right: 220px;
+  margin-bottom: 0;
+  margin-left: 220px;
+  height: 100vh;
+  background-color: teal;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  border-radius: 8px;
+  opacity: 0.5;
+  align-items: center;
 }

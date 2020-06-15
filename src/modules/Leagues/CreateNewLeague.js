@@ -35,11 +35,18 @@ const CreateNewLeague = () => {
       )
         .then((resp) => resp.json())
         .then((data) => {
-          console.log(data.error);
           if (data.error) {
             history.push("*");
           } else {
-            dispatch(createNewLeague(data));
+            // const leagueObject = {
+            //   leagueName: values.name,
+            //   leagueInfo: values.data,
+            // };
+            console.log(values.name);
+            console.log(values.data);
+            
+            
+            dispatch(createNewLeague(values));
             history.push("/myLeagues");
           }
         });

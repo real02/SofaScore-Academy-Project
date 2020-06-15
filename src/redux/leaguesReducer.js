@@ -9,12 +9,12 @@ export default function (state = INITIAL_STATE, action) {
     case GET_LEAGUES:
       return { ...state, leagues: action.payload };
     case CREATE_NEW_LEAGUE:
-      const id = action.id;
-      return { ...state, leagues: state.leagues.push(id) };
+      state.leagues.push(action.league);
+      return action.league
     case DELETE_LEAGUE:
       return {
         ...state,
-        leagues: state.leagues.filter((id) => id !== action.payload),
+        leagues: state.leagues.filter((id) => id !== action.payload), //popraviti
       };
     default:
       return state;
